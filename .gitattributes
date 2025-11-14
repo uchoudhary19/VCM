@@ -1,2 +1,6 @@
-Dockerfile
-Go
+# Never ignore Go or TypeScript
+*.go linguist-language=Go
+*.ts linguist-language=TypeScript
+
+# Mark all content as detectable
+* linguist-detectable=true
