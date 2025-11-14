@@ -2,14 +2,10 @@ networks:
   db_network:
     name: db_network
 
-volumes:
-  postgres_data:
-    name: ${POSTGRES_VOLUME}
-
 services:
   postgres:
     image: bitnami/postgresql:latest
-    container_name: postgres_project_a
+    container_name: vcs_db_continer
     restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -18,6 +14,6 @@ services:
     ports:
       - "${POSTGRES_PORT}:5432"
     volumes:
-      - vcm_data:/var/lib/postgresql/data
+      - ./vcm_data:/var/lib/postgresql/data
     networks:
       - db_network

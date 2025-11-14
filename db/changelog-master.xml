@@ -5,12 +5,8 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
 
-    <include file="changelogs/vendors.xml" />
-    <include file="changelogs/contacts.xml" />
-    <include file="changelogs/contracts.xml" />
-    <include file="changelogs/invoices.xml" />
-    <include file="changelogs/users.xml" />
-    <include file="changelogs/roles.xml" />
-    <include file="changelogs/user_roles.xml" />
-    <include file="changelogs/audit_logs.xml" />
+    <includeAll 
+        path="changelogs"
+        relativeToChangelogFile="true" 
+        errorIfMissingOrEmpty="true" />
 </databaseChangeLog>
