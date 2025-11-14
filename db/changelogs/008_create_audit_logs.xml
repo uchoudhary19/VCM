@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+
+    <changeSet id="8-create-audit-logs" author="chatgpt">
+        <createTable tableName="audit_logs">
+            <column name="id" type="SERIAL">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="user_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="action" type="VARCHAR(255)" />
+            <column name="entity" type="VARCHAR(100)" />
+            <column name="entity_id" type="INT" />
+            <column name="timestamp" type="TIMESTAMP" defaultValueDate="CURRENT_TIMESTAMP" />
+        </createTable>
+
+
+        <addForeignKeyConstraint
+            baseTableName="audit_logs"
+            baseColumnNames="user_id"
+            referencedTableName="users"
+            referencedColumnNames="id"
+            constraintName="fk_auditlogs_users" />
+    </changeSet>
+
+
+</databaseChangeLog>
